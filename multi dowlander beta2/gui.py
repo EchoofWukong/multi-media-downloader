@@ -3,6 +3,7 @@ from tiktok import TikTokSayfasi
 from instagram import InstagramSayfasi
 from youtube import YouTubeSayfasi
 from instagram_toplayici import InstagramToplayiciSayfasi
+from genel_indirici import GenelIndiriciSayfasi # YENİ EKLENEN MODÜL
 
 class AnaPencere(QMainWindow):
     def __init__(self):
@@ -39,7 +40,7 @@ class AnaPencere(QMainWindow):
             QPushButton.indir_btn:hover { background-color: #5574e6; }
             QPushButton.indir_btn:disabled { background-color: #2a3050; color: #8a93ad; }
             
-            QProgressBar { border: none; border-radius: 4px; background-color: #252c4a; color: transparent; }
+            QProgressBar { border: none; border-radius: 4px; background-color: #252c4a; color: #ffffff; font-weight: bold; text-align: center; }
             QProgressBar::chunk { background-color: #6b8aff; border-radius: 4px; }
             
             /* IG Toplayıcı Tablosu ve Dropdown İçin Eklenen Stiller */
@@ -63,14 +64,16 @@ class AnaPencere(QMainWindow):
         layout.setSpacing(0)
         
         self.sol_menu = QListWidget()
-        self.sol_menu.addItems(["📸 Instagram Medya", "▶️ YouTube", "🎵 TikTok", "👥 IG Toplayıcı"])
+        # YENİ MENÜ ELEMANI EKLENDİ
+        self.sol_menu.addItems(["📸 Instagram Medya", "▶️ YouTube", "🎵 TikTok", "👥 IG Toplayıcı", "⬇️ Genel İndirici"])
         self.sol_menu.setFixedWidth(220)
         
         self.sayfalar = QStackedWidget()
         self.sayfalar.addWidget(InstagramSayfasi())
         self.sayfalar.addWidget(YouTubeSayfasi())
         self.sayfalar.addWidget(TikTokSayfasi()) 
-        self.sayfalar.addWidget(InstagramToplayiciSayfasi()) 
+        self.sayfalar.addWidget(InstagramToplayiciSayfasi())
+        self.sayfalar.addWidget(GenelIndiriciSayfasi()) # YENİ SAYFA EKLENDİ
         
         layout.addWidget(self.sol_menu)
         layout.addWidget(self.sayfalar)
